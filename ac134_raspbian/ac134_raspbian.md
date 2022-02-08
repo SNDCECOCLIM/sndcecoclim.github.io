@@ -1,6 +1,8 @@
 ---
 layout: default
 title: AC 134 Manuel
+has_children: true
+nav_order: 1
 ---
 # AC134_RASBIAN
 

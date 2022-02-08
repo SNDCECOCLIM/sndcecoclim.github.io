@@ -27,9 +27,13 @@ url: "https://sndcecoclim.github.io/" # the base hostname & protocol for your si
 github_username:  SNDCECOCLIM
 
 # Build settings
-theme: jekyll-theme-cayman
+theme: "just-the-docs"
 plugins:
   - jekyll-feed
+
+  # Enable or disable the site search
+# Supports true (default) or false
+search_enabled: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.
