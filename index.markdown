@@ -1,5 +1,6 @@
 ---
 layout: default
+title: SNDC Dev Manuel
 ---
 
 # AC134_RASPBIAN 
@@ -12,5 +13,13 @@ This is a normal paragraph following a header. GitHub is a code hosting platform
 ## Préparation Toolchain de cross-compilation
 
 
-# Aide rédaction Github Page 
+## Aide rédaction Github Page 
 [Help](./help.markdown).
+
+
+
+
+[Click me](http://www.google.com){: .btn .btn-outline }
+[Link button](http://example.com/){: .btn .btn-green }
+
+<button type="button" name="button" class="btn">Button element</button>

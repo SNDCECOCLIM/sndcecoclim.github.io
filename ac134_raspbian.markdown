@@ -1,5 +1,6 @@
 ---
 layout: default
+title: AC 134 Manuel
 ---
 # AC134_RASBIAN
 

@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Template rédaction Github pages
 ---
 
 Text can be **bold**, _italic_, or ~~strikethrough~~.

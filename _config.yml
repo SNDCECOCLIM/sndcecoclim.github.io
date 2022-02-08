@@ -21,7 +21,7 @@
 title: SNDC Dev Manuel
 email: e.barbier@sndc.fr
 description: >- # this means to ignore newlines until "baseurl:"
- Contient tous les instructions, modes d'emploi, tutotiels ... pour développer chez SNDC
+ Contient tous les instructions, modes d'emploi, tutoriels ... pour développer chez SNDC
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://sndcecoclim.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  SNDCECOCLIM
