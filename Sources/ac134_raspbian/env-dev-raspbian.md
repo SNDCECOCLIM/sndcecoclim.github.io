@@ -24,6 +24,7 @@ Dans VS Code faire ensuite Fichier -> Ouvrir un nouveau dossier et se placer dan
 - **Build1**                    (Dossier de compilation pour l'ancienne carte) 
 - **Build2**                    (Dossier de compilation pour la nouvelle carte)
 - **database**                  (Bases de données et ficheirs de traduction)
+    - **BDD**                   (Fichiers d'extraction de la liste des véhicules depuis Sylob, pour création vstr)
 - **drivers**                   (Sources des pilotes et services pour la nouvelle carte)
     - **gpio-pca953.x**         (Sources pilote GPIO Extender)
     - **kpd**                   (Sources pilote clavier plastron)
@@ -46,4 +47,13 @@ Dans VS Code faire ensuite Fichier -> Ouvrir un nouveau dossier et se placer dan
 - **Traduction**                (Scripts de détection des traductions dans le code)
 - **UPDATE_PACKAGE**            (Dossier contenant les mises à jours)
 
+## [](#header-2)Compilation
+Pour la compilation des fonctions linux ont été créées dans le fichier /home/pi/.bash_aliases (équivalent d'un alias mais un peu plus complexe).
 
+Ces fonctions sont : 
+- **mmake** : Compile pour les 2 cartes et crée les fichiers de mise à jour 
+- **mmclean**  : Nettoye les ficheirs de compialtion pour les 2 cartes
+- **mpackage**  : Créé les fichiers de mise à jour pour les 2 cartes
+
+Les 2 premières fonctions font appel au script [make.sh](https://github.com/SNDCECOCLIM/AC134_RASBIAN/blob/master/make.sh).  
+La dernière fait appel au script [package.sh](https://github.com/SNDCECOCLIM/AC134_RASBIAN/blob/master/package.sh).  
