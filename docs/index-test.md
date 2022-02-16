@@ -4,6 +4,11 @@ title: Markdown kitchen sink
 nav_order: 99
 ---
 
+Pour tester en local, exécuter la commande suivante : 
+```bash
+bundle exec jekyll serve
+```
+
 Text can be **bold**, _italic_, or ~~strikethrough~~.
 
 [Link to another page](another-page).
