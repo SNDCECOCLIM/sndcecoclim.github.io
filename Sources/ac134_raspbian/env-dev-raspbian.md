@@ -59,6 +59,8 @@ Les 2 premières fonctions font appel au script [make.sh](https://github.com/SND
 La dernière fait appel au script [package.sh](https://github.com/SNDCECOCLIM/AC134_RASBIAN/blob/master/package.sh).  
 
 ## [](#header-2)Release version 
+Mettre à jour le fichier Historique.log en indiquant les bugs corrigés et nouvelles fonctionnalités apportés par la mise à jour.  
+
 Dans le fichier affichageVersion.c, vérifier le numéro de version et passer la version dev à 0 :
 ```c++
 int dev_version = 0; // 1 Si version en cours de développement, 0 si release. // Affiche -DEV derrière l'affichage version si = à 1
@@ -103,3 +105,10 @@ git add .
 git commit -m "Début version XXXX"
 git push 
 ```
+
+Archiver l'ancienne mise à jour dans le dossier V:\BUREAU_ETUDES\CENTRALE AC134\2. CONCEPTION\4. PROGRAMMATION\Archives Mises à jour  
+
+Copier les 2 fichiers **update.tar** et **update_V2.tar** dans le dossier X:\Mise a jour centrales automatiques_VXXXX.  
+Renommer le dossier avec le nouveau numéro de version. 
+
+Informer le SAV et/ou les autres services intéressés du déploiement de la nouvelle version. (Eventuellement indiquer les modifications apportées).
