@@ -112,3 +112,5 @@ Copier les 2 fichiers **update.tar** et **update_V2.tar** dans le dossier X:\Mis
 Renommer le dossier avec le nouveau numéro de version. 
 
 Informer le SAV et/ou les autres services intéressés du déploiement de la nouvelle version. (Eventuellement indiquer les modifications apportées).
+
+Ajouter le nouveau numéro de série dans le GDO.   
