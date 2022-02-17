@@ -64,18 +64,18 @@ Dans le fichier affichageVersion.c, vérifier le numéro de version et passer la
 int dev_version = 0; // 1 Si version en cours de développement, 0 si release. // Affiche -DEV derrière l'affichage version si = à 1
 int num_version = 5023; // Numéro de version
 ```
-Sur Windows, aller dans le dossier V:\BUREAU_ETUDES\CENTRALE AC134\2. CONCEPTION\4. PROGRAMMATION\Base de données.
-Exécuter la macro Excel **Générer_BDD_v2.xls**. Elle va générer la liste des véhicules dans le fichier BDD.csv.
-Copier ce fichier dans le dossier database/BDD sur la Raspberry Pi de développement. 
+Sur Windows, aller dans le dossier V:\BUREAU_ETUDES\CENTRALE AC134\2. CONCEPTION\4. PROGRAMMATION\Base de données. 
+Exécuter la macro Excel **Générer_BDD_v2.xls**. Elle va générer la liste des véhicules dans le fichier BDD.csv. 
+Copier ce fichier dans le dossier database/BDD sur la Raspberry Pi de développement.  
 
-Sur la Raspberry Pi de développement, se rendre dans le dossier database BDD et exécuter le script : 
+Sur la Raspberry Pi de développement, se rendre dans le dossier database/BDD et exécuter le script : 
 ```
 cd /home/pi/AC134_RASBIAN/database/BDD
 ./importvstr
 ```
-Ce script va mettre à jour la base de données vstr dans le dossier database/
+Ce script va mettre à jour la base de données vstr dans le dossier database/  
 
-Lancer la commande **mpackage** pour inclure la nouvelle base de donnée dans la mise à jour.
+Lancer la commande **mpackage** pour inclure la nouvelle base de donnée dans la mise à jour.  
 
 Faire un commit pour indiquer la fin de la nouvelle version. 
 ```
@@ -83,8 +83,11 @@ git add .
 git commit -m "Fin version XXXX"
 git push 
 ```
+Sur Github, créer un pull request de la branche VXXX vers la branche master. Ceci permet de garder la version Release à jour sur la branche master.  
+Verifier les conflits éventuels via l'onglet Pull Request.  
+Effectuer le merge une fois les conflits résolus.  
 
-Créer la branche pour la nouvelle version 
+Créer la branche pour la nouvelle version. 
 ```
 git checkout -b VXXXX
 ```
