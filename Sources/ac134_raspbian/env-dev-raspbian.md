@@ -23,7 +23,7 @@ Dans VS Code faire ensuite Fichier -> Ouvrir un nouveau dossier et se placer dan
 
 - **Build1**                    (Dossier de compilation pour l'ancienne carte) 
 - **Build2**                    (Dossier de compilation pour la nouvelle carte)
-- **database**                  (Bases de données et ficheirs de traduction)
+- **database**                  (Bases de données et fichiers de traduction)
     - **BDD**                   (Fichiers d'extraction de la liste des véhicules depuis Sylob, pour création vstr)
 - **drivers**                   (Sources des pilotes et services pour la nouvelle carte)
     - **gpio-pca953.x**         (Sources pilote GPIO Extender)
@@ -53,7 +53,50 @@ Pour la compilation des fonctions linux ont été créées dans le fichier /home
 Ces fonctions sont : 
 - **mmake** : Compile pour les 2 cartes et crée les fichiers de mise à jour 
 - **mmclean**  : Nettoye les ficheirs de compialtion pour les 2 cartes
-- **mpackage**  : Créé les fichiers de mise à jour pour les 2 cartes
+- **mpackage**  : Copie les fichiers de mise à jour pour les 2 cartes et créé les arfchives de mises à jour.
 
 Les 2 premières fonctions font appel au script [make.sh](https://github.com/SNDCECOCLIM/AC134_RASBIAN/blob/master/make.sh).  
 La dernière fait appel au script [package.sh](https://github.com/SNDCECOCLIM/AC134_RASBIAN/blob/master/package.sh).  
+
+## [](#header-2)Release version 
+Dans le fichier affichageVersion.c, vérifier le numéro de version et passer la version dev à 0 :
+```c++
+int dev_version = 0; // 1 Si version en cours de développement, 0 si release. // Affiche -DEV derrière l'affichage version si = à 1
+int num_version = 5023; // Numéro de version
+```
+Sur Windows, aller dans le dossier V:\BUREAU_ETUDES\CENTRALE AC134\2. CONCEPTION\4. PROGRAMMATION\Base de données.
+Exécuter la macro Excel **Générer_BDD_v2.xls**. Elle va générer la liste des véhicules dans le fichier BDD.csv.
+Copier ce fichier dans le dossier database/BDD sur la Raspberry Pi de développement. 
+
+Sur la Raspberry Pi de développement, se rendre dans le dossier database BDD et exécuter le script : 
+```
+cd /home/pi/AC134_RASBIAN/database/BDD
+./importvstr
+```
+Ce script va mettre à jour la base de données vstr dans le dossier database/
+
+Lancer la commande **mpackage** pour inclure la nouvelle base de donnée dans la mise à jour.
+
+Faire un commit pour indiquer la fin de la nouvelle version. 
+```
+git add .
+git commit -m "Fin version XXXX"
+git push 
+```
+
+Créer la branche pour la nouvelle version 
+```
+git checkout -b VXXXX
+```
+Mettre à jour le fichier affichageVersion.c avec la nouvelle version et passer la version dev à 1. 
+```c++
+int dev_version = 1; // 1 Si version en cours de développement, 0 si release. // Affiche -DEV derrière l'affichage version si = à 1
+int num_version = 5024; // Numéro de version
+```
+
+Faire un commit pour indiquer le début de la nouvelle version : 
+```
+git add .
+git commit -m "Début version XXXX"
+git push 
+```
