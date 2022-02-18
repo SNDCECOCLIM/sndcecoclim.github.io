@@ -34,7 +34,7 @@ Il possède 2 voies permettant de lire les valeurs du capteur de pression boutei
 Pour les balances, il s'agit d'un ADC [MCP3424](../../Datasheets/MCP342x.pdf).  
 Il possède 4 voies permettant de lire les valeurs de la balance bouteille et des 3 pesons d'huile.  
 L'adresse sur le bus I2C de ces deux composants est définie par les pins Adr0 (9) et Adr1 (10).  
-![](../../Datasheets/Adresse MCP342x.png)  ![](../../Datasheets/Tableau adr mcp342x.png)  
+![](../../Datasheets/Adresse_MCP342x.png)  ![](../../Datasheets/Tableau_adr_mcp342x.png)  
 L'adresse pour les capteurs de pression est 0x6b (1101011).  
 L'adresse pour les balances est 0x69 (1101001).  
 Pour activer l'ADC au démarrage, il faut exécuter la commande suivante : 
@@ -57,4 +57,6 @@ Pour régler ce paramètre, il faut éxécuter les commandes suivantes :
 echo 15 > /sys/bus/i2c/devices/1-0069/iio\:device0/in_voltage_sampling_frequency
 echo 15 > /sys/bus/i2c/devices/1-006b/iio\:device1/in_voltage_sampling_frequency
 ```
-Ici la fréquence d'échantillonage est de 15 valeurs par secondes, la précision sera donc de 16 bits.  
+Ici la fréquence d'échantillonage est de 15 valeurs par secondes, la précision sera donc de 16 bits et le LSB sera 62.5 µV.  
+Pour calculer la tension mesurée, il faut appliquer la formule suivante (le gain PGA est égal à 1):  
+![](../../Datasheets/formule_MCP342x.png)
