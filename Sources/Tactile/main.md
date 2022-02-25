@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Manuel Interface Tactile
+title: Interface Tactile
 has_children: true
 nav_order: 1
 ---

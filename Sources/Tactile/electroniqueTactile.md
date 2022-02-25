@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Carte Electronique Tactile
-parent: Manuel Interface Tactile
+parent: Interface Tactile
 nav_order: 4
 ---
 
@@ -60,3 +60,5 @@ echo 15 > /sys/bus/i2c/devices/1-006b/iio\:device1/in_voltage_sampling_frequency
 Ici la fréquence d'échantillonage est de 15 valeurs par secondes, la précision sera donc de 16 bits et le LSB sera 62.5 µV.  
 Pour calculer la tension mesurée, il faut appliquer la formule suivante (le gain PGA est égal à 1):  
 ![](../../Datasheets/formule_MCP342x.png)
+
+Le gain est réglé avec la velur in_voltage_scale (égale à LSB/PGA).  

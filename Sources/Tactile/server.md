@@ -1,6 +1,6 @@
 ---
 layout: default
 title: Serveur
-parent: Manuel Interface Tactile
+parent: Interface Tactile
 nav_order: 3
 ---

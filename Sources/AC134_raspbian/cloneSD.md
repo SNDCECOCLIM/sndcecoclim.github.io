@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Cloner une carte SD
-parent: AC 134 Manuel
+parent: Interface AC/RF/HD
 nav_order: 3
 ---
 

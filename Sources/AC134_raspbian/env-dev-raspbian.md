@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Environnement AC134 RASPBIAN 
-parent: AC 134 Manuel
+parent: Interface AC/RF/HD
 nav_order: 0
 ---
 

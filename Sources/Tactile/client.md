@@ -1,6 +1,6 @@
 ---
 layout: default
 title: Client
-parent: Manuel Interface Tactile
+parent: Interface Tactile
 nav_order: 2
 ---
