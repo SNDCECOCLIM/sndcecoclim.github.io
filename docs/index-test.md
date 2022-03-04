@@ -65,6 +65,8 @@ end
 | ok           | good `oreos`      | hmm   |
 | ok           | good `zoute` drop | yumm  |
 
+[Générateur de tableau Markdown](https://www.tablesgenerator.com/markdown_tables)
+
 ### There's a horizontal rule below this.
 
 * * *

@@ -18,7 +18,13 @@ i2cdetect -y 1
 ```
 
 # [](#header-1)Périphériques
-Le fichier gpioConfig.sh permet de configurer les périphériques au démarrage de la Raspberry Pi.  
+Au démarrage de la Raspberry Pi, il est nécessaire de configurer les différents capteurs et actionneurs en fonction de nos besoins.  
+Le script [gpioConfig.sh](https://github.com/SNDCECOCLIM/sndc-config/blob/master/home/pi/sndc/gpioConfig.sh) permet de configurer l'ensemble des entrées et sorties de la carte de commande 470H43.  
+Le service [gpioConfig.service](https://github.com/SNDCECOCLIM/sndc-config/blob/master/debian/gpioConfig.service) permet d'éxécuter le script [gpioConfig.sh](https://github.com/SNDCECOCLIM/sndc-config/blob/master/home/pi/sndc/gpioConfig.sh) automatiquement au démarrage de la Raspberry Pi.  
+**Astuce :** _Si le service est modifié, ne pas oublier de recharger les services avec la commande :_  
+```bash
+sudo systemctl daemon-reload
+```
 
 ## [](#header-2)Horloge
 L'horloge utiliséee est une [DS3232](../../Datasheets/DS3232.pdf).
@@ -61,4 +67,29 @@ Ici la fréquence d'échantillonage est de 15 valeurs par secondes, la précisio
 Pour calculer la tension mesurée, il faut appliquer la formule suivante (le gain PGA est égal à 1):  
 ![](../../Datasheets/formule_MCP342x.png)
 
-Le gain est réglé avec la velur in_voltage_scale (égale à LSB/PGA).  
+Le gain est réglé avec la valeur in_voltage_scale (égale à LSB/PGA).  
+
+## [](#header-2) GPIOs : Relais, Buzzer et Pressostat 
+
+  
+|     E/S           | GPIO Dec  | GPIO Hexa    |     PIN Raspberry     |     Type      |     Etat défaut    |
+|:-----------------:|:---------:|:------------:|:---------------------:|:-------------:|:------------------:|
+|     Relais 1      |     25    |     0x019    |     22                |     Sortie    |     0              |
+|     Relais 2      |     8     |     0x008    |     24                |     Sortie    |     0              |
+|     Relais 3      |     11    |     0x00B    |     23                |     Sortie    |     0              |
+|     Relais 4      |     5     |     0x005    |     29                |     Sortie    |     0              |
+|     Relais 5      |     6     |     0x006    |     31                |     Sortie    |     0              |
+|     Relais 6      |     13    |     0x00D    |     33                |     Sortie    |     0              |
+|     Relais 7      |     19    |     0x013    |     35                |     Sortie    |     0              |
+|     Relais 8      |     26    |     0x01A    |     37                |     Sortie    |     0              |
+|     Relais 9      |     4     |     0x004    |     7                 |     Sortie    |     0              |
+|     Relais 10     |     17    |     0x011    |     11                |     Sortie    |     0              |
+|     Relais 11     |     27    |     0x01B    |     13                |     Sortie    |     0              |
+|     Relais 12     |     23    |     0x017    |     16                |     Sortie    |     0              |
+|     Relais 13     |     22    |     0x016    |     15                |     Sortie    |     0              |
+|     Relais 14     |     24    |     0x018    |     18                |     Sortie    |     0              |
+|     Relais 15     |     16    |     0x010    |     36                |     Sortie    |     0              |
+|     Relais 16     |     20    |     0x014    |     38                |     Sortie    |     0              |
+|     Buzzer        |     7     |     0x007    |     26                |     Sortie    |     0              |
+|     Enable        |     10    |     0x00A    |     19                |     Sortie    |     0              |
+|     Pressostat    |     12    |     0x00C    |     32                |     Entrée    |     0              |
