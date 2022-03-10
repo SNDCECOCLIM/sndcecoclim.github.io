@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Démarrage AC134 RASPBIAN 
+title: Drivers & Start
 parent: Interface AC/RF/HD
 nav_order: 5
 ---
@@ -19,5 +19,7 @@ Au démarrage, ce fichier va lancer tout les éxécutables nécessaires au bon f
 * **/usr/bin/rapp & :** Programme de redémarrage quand appui long sur STOP
 * **watch -n 1 /usr/bin/buzled > /dev/null 2>&1 & :** Gestion des leds et du buzzer (s'éxécute toutes les secondes)
 * **/usr/bin/ac134 & :** Programme principal.
-
+```
+watch - n {x} /ma/commande //Permet d'éxécuter une commande toutes les x secondes
+```
 [Signification > /dev/null 2>&1](https://www.security-helpzone.com/2019/09/22/pourquoi-utiliser-dev-null-2-1/)
