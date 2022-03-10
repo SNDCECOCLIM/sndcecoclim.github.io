@@ -13,7 +13,6 @@ sudo apt install i2c-tools
 
 Pour détecter les périphériques I2C, éxécuter : 
 ```
-i2cdetect -y 0
 i2cdetect -y 1
 ```
 
