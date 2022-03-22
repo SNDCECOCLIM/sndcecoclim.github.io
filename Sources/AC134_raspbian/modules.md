@@ -8,6 +8,7 @@ nav_order: 6
 Pour pouvoir communiquer avec les différents composants que nous connectons (composants I2C, clavier, écran...), il est nécessaires d'intaller des modules linux (pilotes) sur la Raspberry Pi pour qu'elle sache comment les utiliser.  
 [Tutoriel compilation modules Raspberry Pi](https://www.blaess.fr/christophe/2014/03/06/compilation-native-de-modules-kernel-sur-raspberry-pi/) 
 
+# [](#header-1)Activation des modules au démarrage
 Pour les platines non-tactiles, les modules suivants sont nécessaires : 
 *   **i2c-dev :** Gestion I2C
 *   **i2c-bcm2835 :** Gestion I2C
@@ -22,13 +23,15 @@ Pour charger ces modules au démarrage de la Raspberry Pi, il faut les ajouter d
 ```
 sudo nano /etc/modules
 ```
-
+# [](#header-1)Compilation modules spécifiques
 Les modules **kpd** et **lcd_4_20** sont des modules spécifiques SNDC.  
 Le module **gpio-pca953x** est un module non standard mais dont les sources peuvent être facilement trouvées en ligne.  
 Ces trois modules sont compilés spécifiquement pour le projet AC134_RASBIAN.  
 Leurs sources sont disponibles dans le dossier [Drivers](https://github.com/SNDCECOCLIM/AC134_RASBIAN/tree/master/drivers).  
 
-Pour pouvoir compiler un module, il faut récupérer les sources du noyau linux de la Raspberry Pi (A minima les headers) . 
+# [](#header-2)Installation Linux Kernel Headers
+
+Pour pouvoir compiler un module, il faut récupérer les sources du noyau linux de la Raspberry Pi (A minima les Headers) . 
 Les headers correspondant à notre version de Raspbian se trouve dans le dossier [Drivers](https://github.com/SNDCECOCLIM/AC134_RASBIAN/tree/master/drivers) sous le nom **raspberrypi-kernel-headers_{version des headers}**. La version sauvegardée sur Github correspond aux headers pour le noyau linux version **4.14.98-v7+**.  
 Si jamais le noyau a été mis à jour, ou qu'une version plus récente de Raspbian est utilisée, il est possible de retrouver toutes les archives de headers sur le site [archive.raspberrypi.org](https://archive.raspberrypi.org/debian/pool/main/r/raspberrypi-firmware/).  
 Une fois le paquet .deb télécharger, il faut le copier sur la Raspberry Pi et installer les headers avec la commande suivante : 
@@ -45,7 +48,10 @@ Une fois les headers installés, un dossier build doit se trouver dans le dossie
 ```
 ls /lib/modules/$(uname -r)/
 ```
-Pour connaître le dossier ou seront installés les modules, il faut taper la commande suivante pour récupérer la version du noyau linux : 
+
+# [](#header-2)Compilation
+Pour compiler les modules, il faut travailler dans le dossier  **_modules_** correspondant à notre verson du noyau. 
+Pour récupérer la version du noyau linux : 
 ```
 uname -r
 ```
@@ -75,3 +81,5 @@ sudo insmod kpd.ko
 sudo insmod lcd_4_20.ko
 sudo insmod gpio-pca953x.ko
 ```
+
+Pour que les modules s'activent automatiquement au démarrage, il faut ajouter les 
