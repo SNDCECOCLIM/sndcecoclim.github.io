@@ -34,7 +34,7 @@ echo ds3232 0x68 > /sys/class/i2c-adapter/i2c-1/new_device
 ```
 
 ## [](#header-2)Balances et Capteurs de pression
-Le composant permettant de lire les capteurs de pression est ADC [MCP3423](../../Datasheets/MCP342x.pdf).  
+Le composant permettant de lire les capteurs de pression est un ADC [MCP3423](../../Datasheets/MCP342x.pdf).  
 Il possède 2 voies permettant de lire les valeurs du capteur de pression bouteille et nourrice.   
 Pour les balances, il s'agit d'un ADC [MCP3424](../../Datasheets/MCP342x.pdf).  
 Il possède 4 voies permettant de lire les valeurs de la balance bouteille et des 3 pesons d'huile.  
@@ -67,6 +67,26 @@ Pour calculer la tension mesurée, il faut appliquer la formule suivante (le gai
 ![](../../Datasheets/formule_MCP342x.png)
 
 Le gain est réglé avec la valeur in_voltage_scale (égale à LSB/PGA).  
+
+## [](#header-2)Capteur de température (Pas utilisé)
+Le composant permettant de mesurer la température est un [LM75](../../Datasheets/lm75.pdf).  
+Son adresse sur le bus I2C est défini par les pins A2(5), A1(6) et A0(7).  
+Son adresse est 0x48 (1001000). 
+
+Pour activer le capteur de température, il faut éxécuter la ligne suivante au démarrage de la Raspberry Pi :  
+```bash
+echo lm75 0x48 >/sys/bus/i2c/devices/i2c-1/new_device
+```
+Pour lire la température en millidegrés, exécuter : 
+```bash
+echo mcp3424 0x69 >/sys/bus/i2c/devices/i2c-1/new_device
+cat /sys/class/hwmon/hwmon3/temp1_input
+```
+Pour info la valeur de température de hwmon0 correspond à la température du CPU de la Raspberry Pi.  
+La température de hwmon2 correspond à la température de l'horloge DS3232 (+/- 3°C, rafraichie toutes les 64s).  
+
+
+
 
 ## [](#header-2) GPIOs : Relais, Buzzer, Ventilateur et Pressostat 
 [Pinout Raspberry Pi](https://fr.pinout.xyz/)
