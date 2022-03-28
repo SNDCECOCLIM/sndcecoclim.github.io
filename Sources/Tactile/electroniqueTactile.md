@@ -91,27 +91,45 @@ La température de hwmon2 correspond à la température de l'horloge DS3232 (+/-
 ## [](#header-2) GPIOs : Relais, Buzzer, Ventilateur et Pressostat 
 [Pinout Raspberry Pi](https://fr.pinout.xyz/)
   
-|     Sortie        | GPIO Dec  | GPIO Hexa    |     PIN Raspberry     |     Etat défaut    |
-|:-----------------:|:---------:|:------------:|:---------------------:|:------------------:|
-|     Relais 1      |     11    |     0x00B    |     23                |     0              |
-|     Relais 2      |     7     |     0x007    |     26                |     0              |
-|     Relais 3      |     5     |     0x005    |     29                |     0              |
-|     Relais 4      |     12    |     0x00C    |     32                |     0              |
-|     Relais 5      |     6     |     0x006    |     31                |     0              |
-|     Relais 6      |     13    |     0x00D    |     33                |     0              |
-|     Relais 7      |     19    |     0x013    |     35                |     0              |
-|     Relais 8      |     26    |     0x01A    |     37                |     0              |
-|     Relais 9      |     4     |     0x004    |     7                 |     0              |
-|     Relais 10     |     17    |     0x011    |     11                |     0              |
-|     Relais 11     |     27    |     0x01B    |     13                |     0              |
-|     Relais 12     |     23    |     0x017    |     16                |     0              |
-|     Relais 13     |     22    |     0x016    |     15                |     0              |
-|     Relais 14     |     24    |     0x018    |     18                |     0              |
-|     Buzzer        |     16    |     0x010    |     36                |     0              |
-|     Enable        |     8     |     0x008    |     24                |     0              |
+|     Sortie                  | GPIO Dec  | GPIO Hexa    |     PIN Raspberry     |     Etat défaut    |
+|:---------------------------:|:---------:|:------------:|:---------------------:|:------------------:|
+|     Relais 1  (COMP)        |     11    |     0x00B    |     23                |     0              |
+|     Relais 2  (PAV)         |     7     |     0x007    |     26                |     0              |
+|     Relais 3  (CHAUFFEB)    |     5     |     0x005    |     29                |     0              |
+|     Relais 4  (VENT)        |     12    |     0x00C    |     32                |     0              |
+|     Relais 5  (EVHP)        |     6     |     0x006    |     31                |     0              |
+|     Relais 6  (EVBP)        |     13    |     0x00D    |     33                |     0              |
+|     Relais 7  (EVRHC)       |     19    |     0x013    |     35                |     0              |
+|     Relais 8  (EVRECUP)     |     26    |     0x01A    |     37                |     0              |
+|     Relais 9  (EVPURGE)     |     4     |     0x004    |     7                 |     0              |
+|     Relais 10 (EVPAV)       |     17    |     0x011    |     11                |     0              |
+|     Relais 11 (EVHUILE)     |     27    |     0x01B    |     13                |     0              |
+|     Relais 12 (EVCHARGE)    |     22    |     0x016    |     15                |     0              |
+|     Relais 14 (EVDECHARGE)  |     24    |     0x018    |     18                |     0              |
+|     Buzzer    (BUZZ)        |     16    |     0x010    |     36                |     0              |
+|     Enable    (RLEN)        |     8     |     0x008    |     24                |     0              |
 
 |     Entrée        | GPIO Dec  | GPIO Hexa    |     PIN Raspberry     |     Etat défaut    |
 |:-----------------:|:---------:|:------------:|:---------------------:|:------------------:|
 |     Pressostat    |     20    |     0x014    |     38                |     1              |
 |     Ventilateur   |     21    |     0x015    |     40                |     1              |
+
+## [](#header-2) Imprimante 
+
+L'imprimante est connecté au port série de la Raspberry Pi. 
+Il est accessible via le fichier /dev/ttyS0 ou encore via le lien symbolique /dev/serial0.
+```bash
+ls -l /dev/
+```
+
+Pour définir la vitesse de communication (Baudrate) avec le port série, il faut saisir la commande suivante au démarrage de la raspberry : 
+```bash
+stty -F /dev/serial0 19200
+```
+Le baudrate de l'imprimante peut être retrouvé en alimentant l'imprimante tout en maintenant le bouton enfoncé.  
+Pour tester l'impression, la commande suivante est utilisée : 
+```bash
+echo -e "Ceci est un test \\n" > /dev/serial0
+```
+Attention, un seul programme peut communiquer avec le port série à la fois. Si le serveur ou le client utilise déjà le port série, l'utilisation via le terminal ne fonctionnera pas.  
 
