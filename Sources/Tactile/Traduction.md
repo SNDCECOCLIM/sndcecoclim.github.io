@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Serveur
+title: Traduction
 parent: Interface Tactile
 nav_order: 3
 ---
@@ -10,4 +10,4 @@ nav_order: 3
 
 # [](#header-1)Gestion avec LINGUIST
 
-Datasheets\Lien Qtcreator - Linguist.png
+C:\Users\t.bauchet\Documents\GitHub\sndcecoclim.github.io\Datasheets\Lien Qtcreator - Linguist.png
